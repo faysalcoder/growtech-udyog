@@ -1,0 +1,20 @@
+[
+ {
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "site",
+  "shape": "Long Document (print)",
+  "theme": "dose",
+  "hero": "Settled",
+  "nav": "none",
+  "footer": "contact sheet on ink",
+  "imagery": "product",
+  "signature": "the growtech tray built in plastic",
+  "waived": [
+   "37",
+   "47b"
+  ],
+  "prompt": "redesign the brochure and brand identity",
+  "date": "2026-11-21"
+ }
+]

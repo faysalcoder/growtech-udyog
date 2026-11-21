@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>growtech — Company Profile 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=Hind+Siliguri:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: ten A4 portrait pages, 16mm margins, a 12-column grid inside; ink pages open and close the book. */
+:root{
+  --ink:#0B1324; --green:#12B886; --deep:#0A7D5B; --mint:#7FE0BC; --slate:#5B6672;
+  --mist:#F3F6F5; --white:#FFFFFF; --line:#E1E7E5; --ink-2:#1A2436; --ink-3:#2A3548;
+  --display:"Space Grotesk", "Inter", system-ui, sans-serif;
+  --body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --bangla:"Hind Siliguri", "Inter", sans-serif;
+}
+@page{ size:A4; margin:0 }
+*{ box-sizing:border-box; margin:0; padding:0 }
+html{ background:#cfd6d4 }
+body{ font-family:var(--body); color:var(--ink); -webkit-print-color-adjust:exact; print-color-adjust:exact; font-size:9.6pt; line-height:1.5 }
+.page{ width:210mm; height:297mm; position:relative; overflow:hidden; background:var(--white); padding:16mm 16mm 14mm; display:flex; flex-direction:column; page-break-after:always; break-after:page; margin:0 auto 10mm }
+@media print{ html{background:none} .page{ margin:0 } }
+.page.ink{ background:var(--ink); color:var(--white) }
+.page.mist{ background:var(--mist) }
+
+/* type */
+.eyebrow{ font-family:var(--body); font-weight:600; font-size:7.5pt; letter-spacing:.14em; text-transform:uppercase; color:var(--deep) }
+.ink .eyebrow{ color:var(--mint) }
+h1,h2,h3{ font-family:var(--display); font-weight:600; letter-spacing:-.03em; line-height:1.05; text-wrap:balance }
+h1{ font-size:30pt }
+h2{ font-size:22pt }
+h3{ font-size:12pt; letter-spacing:-.01em; line-height:1.2 }
+p{ text-wrap:pretty }
+.lead{ font-size:11.5pt; line-height:1.5; color:var(--slate) }
+.ink .lead{ color:#B9C3D0 }
+.muted{ color:var(--slate) }
+.ink .muted{ color:#9AA6B6 }
+.small{ font-size:8pt; line-height:1.45 }
+.bn{ font-family:var(--bangla); font-weight:600 }
+
+/* header strip used on inner pages */
+.head{ display:flex; justify-content:space-between; align-items:flex-start; gap:12mm; margin-bottom:9mm }
+.head .intro{ max-width:78mm; font-size:9.5pt; color:var(--slate); line-height:1.55; padding-top:1mm }
+.ink .head .intro{ color:#9AA6B6 }
+.folio{ position:absolute; left:16mm; right:16mm; bottom:8mm; display:flex; justify-content:space-between; font-size:7pt; color:#9AA6B6; letter-spacing:.04em }
+.folio .mini{ display:flex; align-items:center; gap:2mm; font-family:var(--display); font-weight:600; letter-spacing:-.04em; font-size:9pt; color:var(--ink) }
+.ink .folio .mini{ color:var(--white) }
+
+/* logo */
+.lockup{ display:inline-flex; align-items:baseline; font-family:var(--display); font-weight:600; letter-spacing:-.05em; line-height:1; color:var(--c, var(--ink)) }
+.lockup .sym{ width:.92em; height:.92em; margin-right:.26em; position:relative; top:.2em; flex:0 0 auto }
+.lockup .o{ width:.65em; height:.65em; margin:0 -.05em 0 .01em; flex:0 0 auto }
+
+/* chips */
+.chips{ display:flex; flex-wrap:wrap; gap:1.4mm }
+.chip{ font-size:6.8pt; font-weight:500; padding:.6mm 2mm; border-radius:99px; background:var(--mist); color:var(--slate); white-space:nowrap }
+.mist .chip{ background:var(--white) }
+.ink .chip{ background:var(--ink-2); color:#B9C3D0 }
+
+/* ---------- page 1: cover ---------- */
+.cover{ padding:18mm }
+.cover .top{ display:flex; justify-content:space-between; font-size:7.5pt; letter-spacing:.16em; text-transform:uppercase; color:#9AA6B6 }
+.cover .mid{ margin-top:58mm; position:relative; z-index:2 }
+.cover .tag{ font-family:var(--display); font-weight:500; font-size:22pt; letter-spacing:-.03em; color:var(--mint); margin-top:8mm }
+.cover .sub{ max-width:118mm; margin-top:6mm; font-size:11pt; line-height:1.55; color:#B9C3D0 }
+.cover .bottom{ margin-top:auto; display:flex; justify-content:space-between; align-items:flex-end; gap:10mm; font-size:8pt; color:#9AA6B6; position:relative; z-index:2 }
+.cover .bottom strong{ color:var(--white); font-weight:600 }
+.cover .grid-art{ position:absolute; right:-34mm; bottom:-30mm; width:150mm; height:150mm; z-index:1 }
+
+/* ---------- page 2: about ---------- */
+.about-grid{ display:grid; grid-template-columns:1.25fr 1fr; gap:10mm }
+.about-grid p + p{ margin-top:3.5mm }
+.stats{ display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--line); border-bottom:1px solid var(--line); margin:9mm 0 }
+.stat{ padding:5mm 3mm 5mm 0 }
+.stat + .stat{ padding-left:4mm; border-left:1px solid var(--line) }
+.stat b{ display:block; font-family:var(--display); font-weight:600; font-size:26pt; letter-spacing:-.04em; line-height:1; color:var(--ink) }
+.stat b em{ font-style:normal; color:var(--green) }
+.stat span{ display:block; margin-top:2mm; font-size:8pt; color:var(--slate); line-height:1.35 }
+.why{ display:grid; grid-template-columns:1fr 1fr; gap:5mm 8mm }
+.why div{ display:grid; grid-template-columns:5mm 1fr; gap:2.5mm }
+.why i{ width:3.2mm; height:3.2mm; border-radius:.8mm; background:var(--green); margin-top:1.3mm; display:block }
+.why h3{ font-size:10.5pt; margin-bottom:1mm }
+.why p{ font-size:8.6pt; color:var(--slate) }
+.founder{ margin-top:auto; display:grid; grid-template-columns:30mm 1fr; gap:7mm; align-items:center; background:var(--mist); border-radius:5mm; padding:6mm; margin-bottom:6mm }
+.founder img{ width:30mm; height:30mm; border-radius:4mm; object-fit:cover; object-position:center 30% }
+.founder h3{ font-size:12pt }
+.founder .role{ color:var(--deep); font-weight:600; font-size:8.5pt; margin:.5mm 0 2mm }
+.founder p{ font-size:8.6pt; color:var(--slate) }
+
+/* ---------- page 3: services ---------- */
+.svc{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:3.5mm }
+.svc article{ background:var(--white); border-radius:4mm; padding:4.5mm 4.5mm; display:flex; flex-direction:column; gap:2.2mm }
+.svc .ic{ width:9mm; height:9mm; border-radius:2.4mm; background:var(--ink); display:grid; place-items:center }
+.svc .ic svg{ width:5mm; height:5mm; stroke:var(--mint); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round }
+.svc article.feature{ background:var(--ink); color:var(--white) }
+.svc article.feature .ic{ background:var(--green) }
+.svc article.feature .ic svg{ stroke:var(--ink) }
+.svc article.feature p{ color:#B9C3D0 }
+.svc article.feature .chip{ background:var(--ink-2); color:#B9C3D0 }
+.svc p{ font-size:8pt; color:var(--slate); line-height:1.42 }
+.svc h3{ font-size:10.5pt }
+.stack{ margin-top:6mm; display:flex; align-items:center; gap:4mm }
+.stack .eyebrow{ white-space:nowrap }
+
+/* ---------- page 4: skills academy ---------- */
+.sk-row{ display:grid; grid-template-columns:76mm minmax(0,1fr); gap:8mm; margin-bottom:8mm }
+.sk-row img{ width:100%; height:86mm; object-fit:cover; object-position:62% 60%; border-radius:4mm; display:block }
+.path{ list-style:none; display:flex; flex-direction:column; gap:4.6mm; margin-top:5mm }
+.path li{ display:grid; grid-template-columns:8mm 1fr; gap:3mm; align-items:center; font-size:9.6pt; line-height:1.35 }
+.path li b{ width:8mm; height:8mm; border-radius:50%; border:1.4px solid var(--ink); display:grid; place-items:center; font-family:var(--display); font-weight:600; font-size:9pt }
+.path li:last-child b{ background:var(--green); border-color:var(--green); color:var(--white) }
+.courses{ width:100%; border-collapse:collapse; margin-top:2mm; font-size:9.4pt }
+.courses th{ text-align:left; font-size:7pt; letter-spacing:.12em; text-transform:uppercase; color:var(--slate); font-weight:600; padding:0 0 2mm; border-bottom:1.4px solid var(--ink) }
+.courses td{ padding:2.9mm 0; border-bottom:1px solid var(--line) }
+.perks{ margin-top:auto; margin-bottom:6mm; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:3.5mm }
+.perks div{ background:var(--mist); border-radius:4mm; padding:6mm 5mm }
+.perks h3{ font-size:10.5pt; margin-bottom:1mm }
+.perks p{ font-size:8.4pt; color:var(--slate) }
+
+/* ---------- page 5: digital safety ---------- */
+.bn-big{ font-family:var(--bangla); font-weight:600; font-size:27pt; line-height:1.3; color:var(--mint); margin:-3mm 0 8mm }
+.aud{ display:grid; grid-template-columns:1fr 1fr; gap:4.5mm }
+.aud article{ border:1px solid var(--ink-3); border-radius:4mm; padding:7mm 6mm }
+.aud .top{ display:flex; gap:3mm; align-items:center; margin-bottom:4.5mm }
+.aud svg, .fmt svg{ width:7mm; height:7mm; flex:0 0 auto; fill:none; stroke:var(--mint); stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round }
+.aud h3{ font-size:12pt }
+.aud .top span{ display:block; font-size:7.8pt; color:#9AA6B6; margin-top:.6mm }
+.ticks{ list-style:none; display:flex; flex-direction:column; gap:2.8mm }
+.ticks li{ display:grid; grid-template-columns:4mm 1fr; gap:2mm; font-size:8.9pt; line-height:1.4; color:#E2E8EF }
+.ticks li::before{ content:""; width:3.4mm; height:3.4mm; margin-top:.5mm; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237FE0BC' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/contain no-repeat }
+.fmt{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:3mm; margin-top:3.5mm }
+.fmt div{ background:var(--ink-2); border-radius:4mm; padding:6mm 4.5mm; min-height:36mm; display:flex; flex-direction:column; gap:3mm; font-family:var(--display); font-weight:600; font-size:10pt; letter-spacing:-.01em; line-height:1.25 }
+.creds{ margin-top:6mm; font-size:8.4pt; color:#A9B4C0; max-width:160mm }
+.book{ margin-top:auto; margin-bottom:6mm; display:flex; justify-content:space-between; align-items:center; gap:8mm; border-top:1px solid var(--ink-3); padding-top:6mm }
+.book p{ font-family:var(--display); font-weight:600; font-size:14pt; letter-spacing:-.02em; line-height:1.2; max-width:88mm }
+.book a{ font-family:var(--display); font-weight:600; font-size:22pt; letter-spacing:-.03em; color:var(--green); text-decoration:none; white-space:nowrap }
+
+/* ---------- page 6: automation + enterprise ---------- */
+.auto{ display:grid; grid-template-columns:1fr 1fr; gap:8mm; margin-bottom:8mm }
+.who{ display:grid; grid-template-columns:1fr 1fr; gap:2mm }
+.who span{ display:flex; align-items:center; gap:2mm; font-size:8.8pt; font-weight:500; padding:2.4mm 3mm; background:var(--mist); border-radius:2.4mm }
+.who span::before{ content:""; width:2.4mm; height:2.4mm; border-radius:.6mm; background:var(--green); flex:0 0 auto }
+.checks{ list-style:none; display:flex; flex-direction:column; gap:2.4mm }
+.checks li{ display:grid; grid-template-columns:4mm 1fr; gap:2mm; font-size:8.8pt; line-height:1.4 }
+.checks li::before{ content:""; width:3mm; height:3mm; margin-top:.8mm; border-radius:.8mm; border:1.4px solid var(--deep); background:linear-gradient(var(--green),var(--green)) center/1.2mm 1.2mm no-repeat }
+.bnline{ margin-top:5mm; padding:4mm 5mm; border-left:0; border-radius:3mm; background:var(--ink); color:var(--white); font-family:var(--bangla); font-weight:600; font-size:12pt; line-height:1.5 }
+.bnline small{ display:block; font-family:var(--body); font-weight:400; font-size:7.5pt; color:#9AA6B6; margin-top:1mm }
+.ent{ margin-top:auto; background:var(--ink); color:var(--white); border-radius:5mm; padding:8mm; margin-bottom:6mm; display:grid; grid-template-columns:1.1fr 1fr; gap:8mm }
+.ent h2{ font-size:18pt }
+.ent .mods{ display:flex; flex-wrap:wrap; gap:1.6mm; margin-top:4mm }
+.ent .mods span{ font-size:7.4pt; padding:1mm 2.4mm; border-radius:99px; border:1px solid var(--ink-3); color:#CFD7E2 }
+.nums{ display:grid; grid-template-columns:1fr 1fr; gap:3mm }
+.nums div{ background:var(--ink-2); border-radius:3mm; padding:4mm }
+.nums b{ display:block; font-family:var(--display); font-size:19pt; letter-spacing:-.04em; line-height:1; color:var(--mint) }
+.nums span{ display:block; font-size:7.6pt; color:#B9C3D0; margin-top:1.5mm; line-height:1.35 }
+.ent .note{ grid-column:1 / -1; display:flex; align-items:center; gap:4mm; border-top:1px solid var(--ink-3); padding-top:4mm; font-size:7.6pt; color:#9AA6B6 }
+.ent .note img{ height:4.2mm; filter:brightness(0) invert(1); opacity:.9 }
+
+/* ---------- page 7: websites ---------- */
+.work{ display:grid; grid-template-columns:repeat(3,1fr); gap:6mm 4.5mm }
+.shot{ display:flex; flex-direction:column; gap:2mm }
+.frame{ border-radius:2.4mm; overflow:hidden; background:var(--white); box-shadow:0 0 0 1px var(--line), 0 2mm 5mm rgba(11,19,36,.08) }
+.frame .bar{ height:4mm; display:flex; align-items:center; gap:1mm; padding:0 2mm; background:#E9EEEC; font-size:5.6pt; color:var(--slate) }
+.frame .bar i{ width:1.3mm; height:1.3mm; border-radius:50%; background:#C5CFCC; display:block }
+.frame .bar em{ font-style:normal; margin-left:2mm; background:var(--white); padding:.3mm 2mm; border-radius:1mm }
+.frame img{ display:block; width:100%; aspect-ratio:16/10; object-fit:cover; object-position:top }
+.shot .meta{ display:flex; flex-direction:column; gap:.4mm }
+.shot h3{ font-size:9.2pt }
+.shot .where{ font-size:7.4pt; color:var(--deep); font-weight:600; white-space:nowrap }
+.shot p{ font-size:7.8pt; color:var(--slate); line-height:1.4 }
+.also{ background:var(--ink); color:#B9C3D0; border-radius:2.4mm; padding:5mm; font-size:8pt; line-height:1.5; display:flex; flex-direction:column; justify-content:center; gap:2mm }
+.also b{ color:var(--mint); font-family:var(--display); font-size:11pt; letter-spacing:-.02em }
+
+
+/* ---------- page 8: products ---------- */
+.prod{ display:grid; grid-template-columns:1fr 1fr; gap:4.5mm }
+.prod article{ border:1px solid var(--ink-3); border-radius:4mm; padding:5.5mm 6mm; display:flex; flex-direction:column; gap:2.2mm }
+.prod article.big{ grid-column:1 / -1; background:var(--ink-2); border-color:var(--ink-2); display:grid; grid-template-columns:1.25fr 1fr; gap:6mm }
+.prod .kind{ font-size:7pt; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--mint) }
+.prod p{ font-size:8.5pt; color:#B9C3D0; line-height:1.45 }
+.prod .figs{ display:grid; grid-template-columns:1fr 1fr; gap:3mm; align-content:start }
+.prod .figs div{ border-top:1px solid var(--ink-3); padding-top:2mm }
+.prod .figs b{ font-family:var(--display); font-size:17pt; letter-spacing:-.04em; color:var(--white); display:block; line-height:1 }
+.prod .figs span{ font-size:7.4pt; color:#9AA6B6 }
+.badge-dev{ align-self:flex-start; font-size:6.6pt; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); background:var(--mint); padding:.6mm 2mm; border-radius:99px }
+
+/* ---------- page 9: creative + logos ---------- */
+.collage{ display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:42mm; gap:2.4mm }
+.collage img{ width:100%; height:100%; object-fit:cover; border-radius:2mm; display:block }
+.collage .tall{ grid-row:span 2 }
+.collage .wide{ grid-column:span 2 }
+.wall-head{ display:flex; justify-content:space-between; align-items:baseline; margin:8mm 0 4mm }
+.wall{ display:grid; grid-template-columns:repeat(5,1fr); gap:2.4mm; margin-bottom:6mm }
+.wall div{ height:21mm; border-radius:2.4mm; background:var(--mist); display:grid; place-items:center; padding:3mm 4mm }
+.wall img{ max-width:100%; max-height:13mm; object-fit:contain }
+.wall img.white{ filter:brightness(0); opacity:.82 }
+.wall img.sq{ max-height:15mm }
+.wall .txt{ font-family:Georgia, "Times New Roman", serif; font-size:9.5pt; letter-spacing:.12em; text-transform:uppercase; text-align:center; line-height:1.15; color:#3f4a5a }
+.wall .more{ background:var(--ink); color:var(--mint); font-family:var(--display); font-weight:600; font-size:9pt; text-align:center; line-height:1.2 }
+
+/* ---------- page 10: process + contact ---------- */
+.steps{ display:grid; grid-template-columns:repeat(5,1fr); gap:3mm; counter-reset:s }
+.steps div{ border-top:2px solid var(--green); padding-top:3mm }
+.steps b{ display:block; font-family:var(--display); font-size:13pt; letter-spacing:-.02em; margin-bottom:1.2mm }
+.steps b::before{ counter-increment:s; content:"0" counter(s); display:block; font-size:7pt; letter-spacing:.12em; color:var(--mint); margin-bottom:1mm }
+.steps p{ font-size:8.8pt; color:#B9C3D0; line-height:1.42 }
+.next{ margin-top:12mm; display:grid; grid-template-columns:1fr 1fr; gap:4mm }
+.next div{ background:var(--ink-2); border-radius:4mm; padding:7mm 6.5mm; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:1.5mm 6mm; align-items:start }
+.next h3{ font-size:13pt }
+.next p{ font-size:9pt; color:#B9C3D0; grid-column:1 }
+.next span{ grid-row:1 / span 2; grid-column:2; font-size:7pt; letter-spacing:.12em; text-transform:uppercase; color:var(--mint); padding-top:.8mm; white-space:nowrap }
+.contact{ margin-top:auto; margin-bottom:10mm; display:grid; grid-template-columns:1.35fr 1fr; gap:10mm; align-items:end }
+.cta{ font-family:var(--display); font-weight:600; font-size:38pt; letter-spacing:-.04em; line-height:1.02 }
+.cta em{ font-style:normal; color:var(--green) }
+.lines{ display:flex; flex-direction:column; gap:2.6mm; font-size:9pt }
+.lines div{ display:grid; grid-template-columns:20mm 1fr; gap:3mm; border-bottom:1px solid var(--ink-3); padding-bottom:2.4mm }
+.lines span{ font-size:7pt; letter-spacing:.12em; text-transform:uppercase; color:#9AA6B6; padding-top:.6mm }
+.lines b{ font-weight:500; color:var(--white) }
+.end-art{ position:absolute; right:-12mm; top:140mm; width:88mm; height:88mm; z-index:0 }
+.last > *:not(.end-art){ position:relative; z-index:1 }
+.endbar{ display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--ink-3); padding-top:5mm; font-size:8pt; color:#9AA6B6 }
+</style>
+</head>
+<body>
+
+<!-- ============ 1. COVER ============ -->
+<section class="page ink cover">
+  <div class="mid">
+    <div class="lockup" style="--c:#fff; font-size:58pt">
+      <svg class="sym" viewBox="6 6 112 112" aria-label="growtech symbol"><rect x="6" y="12" width="50" height="50" rx="9" fill="#FFFFFF"/><rect x="6" y="68" width="50" height="50" rx="9" fill="#FFFFFF"/><rect x="62" y="68" width="50" height="50" rx="9" fill="#FFFFFF"/><path d="M68 56 V46 A40 40 0 0 1 108 6 H118 V16 A40 40 0 0 1 78 56 Z" fill="#12B886"/></svg><span>gr</span><svg class="o" viewBox="0 0 70 70"><rect x="8.5" y="22.5" width="41" height="41" rx="12" fill="none" stroke="#FFFFFF" stroke-width="13"/><path d="M40 30 V24 A22 22 0 0 1 62 2 H68 V8 A22 22 0 0 1 46 30 Z" fill="#12B886" stroke="#0B1324" stroke-width="4" paint-order="stroke"/></svg><span>wtech</span>
+    </div>
+    <div class="tag">Smart solutions that grow with you.</div>
+    <p class="sub">We create the smart and digital solutions a business runs on: business automation, custom software, web and mobile apps, and Odoo ERP. Then we help it look its best and sell more, with brand design, social media content, print materials, SEO and digital marketing.<br><br>Built in Bangladesh for clients at home and abroad, with digital skills training for the next generation of talent.</p>
+  </div>
+  <svg class="grid-art" viewBox="0 0 300 300" aria-hidden="true">
+    <g fill="#1A2436"><rect x="0" y="120" width="86" height="86" rx="16"/><rect x="96" y="120" width="86" height="86" rx="16"/><rect x="0" y="216" width="86" height="86" rx="16"/><rect x="96" y="216" width="86" height="86" rx="16"/><rect x="192" y="216" width="86" height="86" rx="16"/><rect x="96" y="24" width="86" height="86" rx="16" fill="#141E30"/></g>
+    <path d="M198 206 V190 A70 70 0 0 1 268 120 H284 V136 A70 70 0 0 1 214 206 Z" fill="#12B886"/>
+  </svg>
+</section>
+
+<!-- ============ 2. WHO WE ARE ============ -->
+<section class="page">
+  <div class="head">
+    <div><div class="eyebrow">Who we are</div><h1 style="margin-top:3mm; max-width:120mm">Engineers and designers who build the software businesses run on.</h1></div>
+  </div>
+  <div class="about-grid">
+    <div>
+      <p class="lead">GrowTech Labs is a software and digital firm from Bangladesh. We design, build and look after the systems a business depends on: sales and stock for shops, ERP and CRM for distributors, websites and apps for brands, and the automation that ties them together.</p>
+    </div>
+    <div class="muted" style="font-size:9.2pt">
+      <p>Our team has delivered work for a plastic-surgery practice in New York, a car-rental and car-wash business in the Netherlands, a multi-branch restaurant chain in Holland, and restaurants, bakeries, manufacturers and retailers across Dhaka.</p>
+      <p>We also train. Our Skills Academy teaches young people software development, graphic design, video editing, digital marketing and digital security, and the best of them join our project teams.</p>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>6<em>+</em></b><span>years building software for clients</span></div>
+    <div class="stat"><b>110<em>+</em></b><span>projects delivered, agency and freelance</span></div>
+    <div class="stat"><b>15<em>+</em></b><span>countries our clients come from</span></div>
+    <div class="stat"><b>5<em>★</em></b><span>average rating across 80+ freelance projects</span></div>
+  </div>
+  <div class="eyebrow" style="margin-bottom:4mm">Why clients choose us</div>
+  <div class="why">
+    <div><i></i><section><h3>Enterprise-grade engineering</h3><p>The same team that builds a café website has migrated a full ERP and written the APIs behind field-sales apps.</p></section></div>
+    <div><i></i><section><h3>Design and code under one roof</h3><p>Brand, UI, social content and the software itself come from one team, so nothing is lost between hand-offs.</p></section></div>
+    <div><i></i><section><h3>Built for Bangladesh, ready for the world</h3><p>Bangla interfaces and local business workflows at home; the standards our clients in the US and Europe expect.</p></section></div>
+    <div><i></i><section><h3>Support that stays</h3><p>Hosting, updates, staff training and documentation after launch, on a monthly plan that fits a small business.</p></section></div>
+  </div>
+  <div class="founder">
+    <img src="assets/founder.jpg" alt="Md Faysal Sikder">
+    <div>
+      <h3>Md Faysal Sikder</h3>
+      <div class="role">Founder &amp; Lead Engineer</div>
+      <p>Full-stack software engineer with 6+ years across agency, product and in-house enterprise teams. Works in TypeScript, Python, Odoo and Flutter, from database design to the app in a salesperson's hand. Diploma in Computer Technology; BSc in CSE in progress; certified in network and digital security.</p>
+    </div>
+  </div>
+  <div class="folio"><span class="mini">growtech</span><span>02</span></div>
+</section>
+
+<!-- ============ 3. SERVICES ============ -->
+<section class="page mist">
+  <div class="head">
+    <div><div class="eyebrow">What we do</div><h1 style="margin-top:3mm">Nine services,<br>one team.</h1></div>
+    <p class="intro">Start with one service or combine them. Most clients begin with a website or a shop system and grow into apps, automation and marketing.</p>
+  </div>
+  <div class="svc">
+    <article class="feature">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6M16 12H8M13 16H8"/></svg></div>
+      <h3>Business automation software</h3>
+      <p>Sales, billing, stock, dues and staff in one system for supershops, pharmacies, cosmetics and fashion stores, restaurants, clinics and distributors.</p>
+      <div class="chips"><span class="chip">POS &amp; barcode</span><span class="chip">Inventory</span><span class="chip">Accounts</span><span class="chip">Bangla UI</span></div>
+    </article>
+    <article>
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></div>
+      <h3>Custom software &amp; SaaS</h3>
+      <p>Web platforms, portals, dashboards and APIs designed around how your team works, with tests, CI/CD and documentation.</p>
+      <div class="chips"><span class="chip">React / Next.js</span><span class="chip">NestJS</span><span class="chip">Laravel</span><span class="chip">PostgreSQL</span></div>
+    </article>
+    <article>
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="m12 2 10 5-10 5L2 7Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg></div>
+      <h3>ERP, CRM &amp; Odoo services</h3>
+      <p>Odoo implementation, custom modules, version upgrades, data migration and integrations, plus mobile apps for your field team.</p>
+      <div class="chips"><span class="chip">Odoo 19</span><span class="chip">Python</span><span class="chip">REST APIs</span><span class="chip">Migration</span></div>
+    </article>
+    <article>
+      <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg></div>
+      <h3>Websites &amp; e-commerce</h3>
+      <p>Fast, responsive sites and online shops for restaurants, clinics, real estate and corporates, with bookings, payments and a CMS your staff can use.</p>
+      <div class="chips"><span class="chip">WordPress</span><span class="chip">WooCommerce</span><span class="chip">Headless CMS</span></div>
+    </article>
+    <article>
+      <div class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+      <h3>Mobile apps</h3>
+      <p>Android and iOS apps for customers and staff: ordering, bookings, attendance, field sales, with offline support and push notifications.</p>
+      <div class="chips"><span class="chip">Flutter</span><span class="chip">React Native</span><span class="chip">Expo</span></div>
+    </article>
+    <article>
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="m12 19 7-7 3 3-7 7-3-3Z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5Z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
+      <h3>UI/UX &amp; brand design</h3>
+      <p>Interfaces, logos, menus and social-media content that look the same on a phone screen, a signboard and a printed menu.</p>
+      <div class="chips"><span class="chip">Figma</span><span class="chip">Brand identity</span><span class="chip">Social content</span></div>
+    </article>
+    <article>
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg></div>
+      <h3>Graphic &amp; print material design</h3>
+      <p>Print-ready artwork for brochures, flyers, posters, banners, signboards, menus, business cards, packaging and labels, set up for your printer.</p>
+      <div class="chips"><span class="chip">Brochures &amp; flyers</span><span class="chip">Banners &amp; signboards</span><span class="chip">Packaging</span></div>
+    </article>
+    <article>
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></svg></div>
+      <h3>SEO &amp; digital marketing</h3>
+      <p>Technical SEO, Core Web Vitals, Google and Facebook campaigns, and F-commerce setups that turn page visitors into orders.</p>
+      <div class="chips"><span class="chip">Technical SEO</span><span class="chip">Meta ads</span><span class="chip">Analytics</span></div>
+    </article>
+    <article>
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+      <h3>Digital security &amp; IT training</h3>
+      <p>Website and system hardening, backups and access control, plus cyber-safety workshops and job-ready courses through our Skills Academy.</p>
+      <div class="chips"><span class="chip">Hardening</span><span class="chip">Backups</span><span class="chip">Workshops</span></div>
+    </article>
+  </div>
+  <div class="folio"><span class="mini">growtech</span><span>03</span></div>
+</section>
+
+<!-- ============ 4. SKILLS ACADEMY ============ -->
+<section class="page">
+  <div class="head">
+    <div><div class="eyebrow">GrowTech Skills Academy</div><h1 style="margin-top:3mm; max-width:100mm">Training the next team, close to home.</h1></div>
+    <p class="intro">Hands-on, job-ready training for young people in Gazaria and nearby, taught by working developers and designers on real client projects. The best trainees join our project teams.</p>
+  </div>
+  <div class="sk-row">
+    <img src="assets/skills-class.jpg" alt="Hands typing on a laptop during a class">
+    <div>
+      <div class="eyebrow" style="color:var(--slate)">How it works</div>
+      <ol class="path">
+        <li><b>1</b><span>Enrol</span></li>
+        <li><b>2</b><span>Learn by doing, on live projects</span></li>
+        <li><b>3</b><span>Build a portfolio</span></li>
+        <li><b>4</b><span>Internship</span></li>
+        <li><b>5</b><span>Work with growtech, or find a job or freelance clients</span></li>
+      </ol>
+    </div>
+  </div>
+  <table class="courses">
+    <thead><tr><th>Courses</th></tr></thead>
+    <tbody>
+      <tr><td>Web &amp; software development</td></tr>
+      <tr><td>Graphic design &amp; digital media</td></tr>
+      <tr><td>Digital marketing &amp; e-commerce</td></tr>
+      <tr><td>Video editing &amp; motion</td></tr>
+      <tr><td>Digital security &amp; cyber safety</td></tr>
+      <tr><td>Freelancing, client communication &amp; career guidance</td></tr>
+      <tr><td>Computer basics for small businesses</td></tr>
+    </tbody>
+  </table>
+  <div class="perks">
+    <div><h3>Monthly instalments</h3><p>Pay course fees month by month.</p></div>
+    <div><h3>Scholarships</h3><p>For women and low-income students.</p></div>
+    <div><h3>Career guidance</h3><p>Continued support after the course.</p></div>
+  </div>
+  <div class="folio"><span class="mini">growtech</span><span>04</span></div>
+</section>
+
+<!-- ============ 5. DIGITAL SAFETY ============ -->
+<section class="page ink">
+  <div class="head">
+    <div><div class="eyebrow">Digital safety program</div><h1 style="margin-top:3mm; max-width:105mm">Staying safe online, in plain Bangla and English.</h1></div>
+    <p class="intro">Free and low-cost awareness sessions and practical protection, so families, students and small businesses can use the internet without fear.</p>
+  </div>
+  <p class="bn-big">নিরাপদ অনলাইন, নিশ্চিন্ত জীবন।</p>
+  <div class="aud">
+    <article>
+      <div class="top"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 19c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><circle cx="17" cy="9" r="2.5"/><path d="M16.5 13.6c2.6.3 4.5 2.2 4.5 4.9"/></svg><div><h3>For people</h3><span>Schools, colleges, women’s groups, parents</span></div></div>
+      <ul class="ticks">
+        <li>Strong passwords and two-step login</li>
+        <li>Recognising scam calls and fake bKash or Nagad messages</li>
+        <li>Spotting phishing links</li>
+        <li>Privacy settings on Facebook, WhatsApp and Instagram</li>
+        <li>Cyberbullying and harassment, and where to report it</li>
+        <li>Safe online shopping</li>
+      </ul>
+    </article>
+    <article>
+      <div class="top"><svg viewBox="0 0 24 24"><path d="M4 9l1.5-5h13L20 9"/><path d="M4 9c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3s3-1.3 3-3c0 1.7 1.3 3 3 3"/><path d="M5 12v8h14v-8"/><path d="M10 20v-4h4v4"/></svg><div><h3>For businesses</h3><span>Shops, clinics, offices</span></div></div>
+      <ul class="ticks">
+        <li>Website and system hardening</li>
+        <li>Backups</li>
+        <li>Staff access control</li>
+        <li>Safe payment handling</li>
+        <li>A short security check of your website and Facebook page</li>
+      </ul>
+    </article>
+  </div>
+  <div class="eyebrow" style="margin-top:8mm">Formats</div>
+  <div class="fmt">
+    <div><svg viewBox="0 0 24 24"><path d="M4 5.5c2.5-1 5-1 8 1 3-2 5.5-2 8-1V19c-2.5-1-5-1-8 1-3-2-5.5-2-8-1z"/><path d="M12 6.5V20"/></svg>One-day school workshops</div>
+    <div><svg viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3"/><circle cx="5.5" cy="10" r="2.2"/><circle cx="18.5" cy="10" r="2.2"/><path d="M7 19c0-2.8 2.2-5 5-5s5 2.2 5 5"/><path d="M2.5 18c0-2 1.4-3.6 3.3-3.9"/><path d="M21.5 18c0-2-1.4-3.6-3.3-3.9"/></svg>Women’s sessions</div>
+    <div><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4"/><path d="M8 20h8"/><path d="M7 12l3-3 2 2 4-4"/></svg>Business seminars</div>
+    <div><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5.5c0 4.3-3 7.7-7 9.5-4-1.8-7-5.2-7-9.5V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg>Security check for client websites</div>
+  </div>
+  <p class="creds">Led by our founder, certified in network and digital security: ICSI CNSS Network Security Specialist; Digital Security Essentials from the National Cyber Security Agency and a2i, Bangladesh.</p>
+  <div class="book">
+    <p>Book a session for your school, group or business</p>
+    <a href="tel:+8801331757437">+880 1331 757437</a>
+  </div>
+  <div class="folio"><span class="mini">growtech</span><span>05</span></div>
+</section>
+
+<!-- ============ 6. AUTOMATION + ENTERPRISE ============ -->
+<section class="page">
+  <div class="head">
+    <div><div class="eyebrow">Business automation</div><h1 style="margin-top:3mm; max-width:118mm">Your shop's sales, stock and dues in one system.</h1></div>
+  </div>
+  <div class="auto">
+    <div>
+      <div class="eyebrow" style="color:var(--slate); margin-bottom:3mm">Built for</div>
+      <div class="who">
+        <span>Supershops &amp; groceries</span><span>Pharmacies</span>
+        <span>Cosmetics stores</span><span>Fashion &amp; clothing</span>
+        <span>Mobile &amp; electronics</span><span>Restaurants &amp; cafés</span>
+        <span>Clinics &amp; diagnostics</span><span>Hardware &amp; tiles</span>
+        <span>Distributors &amp; factories</span><span>Schools &amp; coaching</span>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow" style="color:var(--slate); margin-bottom:3mm">What gets automated</div>
+      <ul class="checks">
+        <li>Point of sale with barcode scanning and printed receipts</li>
+        <li>Stock levels, batch and expiry alerts, purchase orders to suppliers</li>
+        <li>Customer dues (the "baki khata"), reminders and collections</li>
+        <li>Daily cash, bank and mobile-wallet accounts with profit reports</li>
+        <li>Staff attendance, roles and approvals</li>
+        <li>Online orders from a website or Facebook page into the same stock</li>
+        <li>Owner dashboard on the phone: today's sales, stock and dues at a glance</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ent">
+    <div>
+      <div class="eyebrow">Odoo &amp; enterprise systems</div>
+      <h2 style="margin-top:3mm">ERP and CRM, built, migrated and taken mobile.</h2>
+      <p class="muted" style="margin-top:3mm; font-size:8.8pt">We implement Odoo and extend it with custom modules, move companies off old or vendor-hosted versions without losing a single balance, and connect sales teams through a mobile app that talks to the ERP.</p>
+      <div class="mods"><span>CRM &amp; pre-sales</span><span>Sales &amp; credit control</span><span>Inventory &amp; delivery</span><span>Collections</span><span>Accounting</span><span>HR &amp; attendance</span><span>Approvals</span><span>Field-sales app</span><span>REST APIs</span></div>
+    </div>
+    <div class="nums">
+      <div><b>29</b><span>custom Odoo 19 modules, about 25,000 lines of Python</span></div>
+      <div><b>50k</b><span>records migrated across 137 models, balances matched exactly</span></div>
+      <div><b>81</b><span>API endpoints serving the mobile field-sales app</span></div>
+      <div><b>39</b><span>screens in the Flutter app: GPS attendance, visits, orders, collections</span></div>
+    </div>
+    <div class="note"><img src="assets/logos/swish.png" alt="SWISH"><span>Figures from the ERP/CRM platform our founder leads in-house at SWISH Global, a luxury bath and kitchen brand (Odoo 15 to Odoo 19).</span></div>
+  </div>
+  <div class="folio"><span class="mini">growtech</span><span>06</span></div>
+</section>
+
+<!-- ============ 7. SELECTED WORK ============ -->
+<section class="page">
+  <div class="head">
+    <div><div class="eyebrow">Selected work · Websites</div><h1 style="margin-top:3mm">Live sites in New York, Holland and Dhaka.</h1></div>
+    <p class="intro">Designed, built or maintained by our team, in agency, freelance and client roles.</p>
+  </div>
+  <div class="work">
+    <div class="shot"><div class="frame"><div class="bar"><i></i><i></i><i></i><em>murrayhillplasticsurgery.com</em></div><img src="assets/work/murrayhill.jpg" alt=""></div>
+      <div class="meta"><h3>Murray Hill Plastic Surgery</h3><span class="where">New York, USA</span></div><p>Practice website for a board-certified plastic surgeon: galleries, consultations, procedure pages. WordPress.</p></div>
+    <div class="shot"><div class="frame"><div class="bar"><i></i><i></i><i></i><em>nompus.com</em></div><img src="assets/work/nompus.jpg" alt=""></div>
+      <div class="meta"><h3>Network of Muslim Physicians</h3><span class="where">Directory platform</span></div><p>Search verified physicians by specialty and location, with doctor profiles, forum and jobs. React with a PHP API.</p></div>
+    <div class="shot"><div class="frame"><div class="bar"><i></i><i></i><i></i><em>bigbreadkitchen.nl</em></div><img src="assets/work/bbkitchen.jpg" alt=""></div>
+      <div class="meta"><h3>BB Kitchen</h3><span class="where">The Netherlands</span></div><p>Multi-branch restaurant site with menus, locations and franchise pages. Custom WordPress plugins and PHP.</p></div>
+    <div class="shot"><div class="frame"><div class="bar"><i></i><i></i><i></i><em>autoradam.nl</em></div><img src="assets/work/autoradam.jpg" alt="" style="aspect-ratio:16/10; object-position:left top"></div>
+      <div class="meta"><h3>Autoradam</h3><span class="where">Almere, Netherlands</span></div><p>Car and van rental, leasing and car wash, with online booking and secure payments. Custom plugins and JavaScript.</p></div>
+    <div class="shot"><div class="frame"><div class="bar"><i></i><i></i><i></i><em>laamdhaka.com</em></div><img src="assets/work/laam.jpg" alt=""></div>
+      <div class="meta"><h3>Laam</h3><span class="where">Gulshan, Dhaka</span></div><p>Restaurant site with a full menu managed from a headless CMS and table reservations. Nuxt.</p></div>
+    <div class="shot"><div class="frame"><div class="bar"><i></i><i></i><i></i><em>izumidhaka.com</em></div><img src="assets/work/izumi.jpg" alt=""></div>
+      <div class="meta"><h3>Izumi</h3><span class="where">Dhaka</span></div><p>Japanese restaurant: menu, private dining and blog, in a quiet layout that fits the brand. PHP.</p></div>
+    <div class="shot"><div class="frame"><div class="bar"><i></i><i></i><i></i><em>orodhaka.com</em></div><img src="assets/work/oro.jpg" alt=""></div>
+      <div class="meta"><h3>ORO</h3><span class="where">Dhaka</span></div><p>Fine-dining restaurant site with menu, private dining and gallery. HTML and SCSS.</p></div>
+    <div class="shot"><div class="frame"><div class="bar"><i></i><i></i><i></i><em>vintage.com.bd</em></div><img src="assets/work/vintage.jpg" alt=""></div>
+      <div class="meta"><h3>Vintage Bake &amp; Cafe</h3><span class="where">Dhaka</span></div><p>Bakery and café with an online cake shop for birthdays and events, plus restaurant pages.</p></div>
+    <div class="also"><b>Also built</b><span>Berger Fosroc Bangladesh · Holey Artisan Bakery · Beans &amp; Aroma Coffees · ASAAN Finance &amp; Consulting · Kepler Design e-commerce</span><span>and 80+ projects for freelance clients in 15+ countries.</span></div>
+  </div>
+  <div class="folio"><span class="mini">growtech</span><span>07</span></div>
+</section>
+
+<!-- ============ 8. SOFTWARE & PRODUCTS ============ -->
+<section class="page ink">
+  <div class="head">
+    <div><div class="eyebrow">Software we've built</div><h1 style="margin-top:3mm">From a single booking to a whole operation.</h1></div>
+    <p class="intro">Platforms and apps our team has designed and shipped end to end, and the products we are building for Bangladeshi businesses.</p>
+  </div>
+  <div class="prod">
+    <article class="big">
+      <div style="display:flex; flex-direction:column; gap:2.2mm">
+        <span class="kind">Case study · Home services marketplace</span>
+        <h2 style="font-size:17pt">SEAC: book a technician like you book a ride.</h2>
+        <p>Customer website and Flutter app, technician and company portals, and an admin panel. Jobs go to the nearest free technician automatically, with live tracking, chat and order status. Built with NestJS, Next.js, PostgreSQL/PostGIS, Redis and Flutter, containerised with Docker and tested in CI.</p>
+        <div class="chips" style="margin-top:1mm"><span class="chip">Booking &amp; pricing</span><span class="chip">Live dispatch</span><span class="chip">Payouts &amp; ledger</span><span class="chip">CRM &amp; HR</span></div>
+      </div>
+      <div class="figs">
+        <div><b>78</b><span>data models</span></div>
+        <div><b>~318</b><span>API endpoints</span></div>
+        <div><b>72</b><span>automated end-to-end tests</span></div>
+        <div><b>v1.0</b><span>Android app released</span></div>
+      </div>
+    </article>
+    <article>
+      <span class="badge-dev">In development</span>
+      <span class="kind">Our product</span>
+      <h3>Busios, a business OS for SMEs</h3>
+      <p>Point of sale, accounting, HR, dues and repairs in one system, with a Bangla AI assistant. Cloud and Community editions.</p>
+    </article>
+    <article>
+      <span class="kind">SaaS</span>
+      <h3>ReplyPilot</h3>
+      <p>AI replies for Facebook sellers: answers Messenger questions, scores leads and follows up, with subscription billing.</p>
+    </article>
+    <article>
+      <span class="kind">Platform</span>
+      <h3>Event &amp; reunion management</h3>
+      <p>Registration, online payments, QR tickets and check-in with five staff roles. Ran a polytechnic alumni reunion in 2026.</p>
+    </article>
+    <article>
+      <span class="kind">Enterprise</span>
+      <h3>Office operations portal</h3>
+      <p>SOPs, RACI tasks, helpdesk and meeting-room booking, with a mobile app for push notices and digital-signature approvals.</p>
+    </article>
+    <article>
+      <span class="kind">Education</span>
+      <h3>Smart library management</h3>
+      <p>Built for a university central library: catalogue, ID-card checks, issue and return, automatic overdue fines and reports. React, Laravel, PostgreSQL.</p>
+    </article>
+    <article>
+      <span class="kind">Productivity</span>
+      <h3>Group expense ledger</h3>
+      <p>Shared trip and team expenses on Android and the web, synced in real time. React Native, Expo and Firebase.</p>
+    </article>
+  </div>
+  <div class="folio"><span class="mini"><svg viewBox="6 6 112 112" width="11" height="11"><rect x="6" y="12" width="50" height="50" rx="9" fill="#fff"/><rect x="6" y="68" width="50" height="50" rx="9" fill="#fff"/><rect x="62" y="68" width="50" height="50" rx="9" fill="#fff"/><path d="M68 56 V46 A40 40 0 0 1 108 6 H118 V16 A40 40 0 0 1 78 56 Z" fill="#12B886"/></svg>growtech</span><span>08</span></div>
+</section>
+
+<!-- ============ 9. CREATIVE + CLIENTS ============ -->
+<section class="page">
+  <div class="head" style="margin-bottom:6mm">
+    <div><div class="eyebrow">Brand &amp; creative</div><h1 style="margin-top:3mm">Design that brings people in.</h1></div>
+    <p class="intro">Social-media campaigns, menus and festival posts for restaurant and café brands in Dhaka, made by the same team that builds their websites.</p>
+  </div>
+  <div class="collage">
+    <img class="tall" src="assets/design/unicafe-drinks.jpg" alt="UniCafe summer drinks">
+    <img src="assets/design/korean-kimchi.jpg" alt="Absolute Korean kimchi jjigae">
+    <img src="assets/design/beans-salad.jpg" alt="Beans and Aroma salad">
+    <img class="tall" src="assets/design/dragon-ramadan.jpg" alt="Tame the Dragon Ramadan">
+    <img src="assets/design/thai-bento.jpg" alt="Absolute Thai bento">
+    <img src="assets/design/beans-26march.jpg" alt="Beans and Aroma 26 March">
+  </div>
+  <div class="wall-head"><div class="eyebrow">Brands our team has built for</div><span class="small muted">Websites, software, design and campaigns</span></div>
+  <div class="wall">
+    <div><img class="sq" src="assets/logos/Pepsi_2023.svg" alt="Pepsi"></div>
+    <div><img src="assets/logos/berger-fosroc.png" alt="Berger Fosroc" style="max-height:15mm"></div>
+    <div><img src="assets/logos/murrayhill.svg" alt="Murray Hill Plastic Surgery"></div>
+    <div><img src="assets/logos/nompus-logo.png" alt="Network of Muslim Physicians"></div>
+    <div><img class="white" src="assets/logos/autoradam-white.png" alt="Autoradam"></div>
+    <div><img class="white" src="assets/logos/bbkitchen.png" alt="BB Kitchen"></div>
+    <div><img class="sq" src="assets/logos/izumi.png" alt="Izumi"></div>
+    <div><img class="white sq" src="assets/logos/laam.svg" alt="Laam"></div>
+    <div><img src="assets/logos/oro.png" alt="ORO"></div>
+    <div><img src="assets/logos/holey.png" alt="Holey Artisan Bakery"></div>
+    <div><img class="sq" src="assets/logos/vintage.png" alt="Vintage Bake and Cafe"></div>
+    <div><img class="white" src="assets/logos/beans.png" alt="Beans and Aroma Coffees"></div>
+    <div><img src="assets/logos/unicafe.png" alt="UniCafe"></div>
+    <div><img src="assets/logos/absolute-thai.png" alt="Absolute Thai"></div>
+    <div><img src="assets/logos/absolute-korean.png" alt="Absolute Korean"></div>
+    <div><img class="sq" src="assets/logos/tame-the-dragon.png" alt="Tame the Dragon"></div>
+    <div><img src="assets/logos/asaan.png" alt="ASAAN"></div>
+    <div><img src="assets/logos/kepler.png" alt="Kepler Design"></div>
+    <div><span class="txt">Mirza<br>Real Estate</span></div>
+    <div class="more">+80 more<br>worldwide</div>
+  </div>
+  <div class="folio"><span class="mini">growtech</span><span>09</span></div>
+</section>
+
+<!-- ============ 10. PROCESS + CONTACT ============ -->
+<section class="page ink last">
+  <div class="eyebrow">How we work</div>
+  <h1 style="margin:3mm 0 10mm; max-width:140mm">Five steps from first call to a system that keeps growing.</h1>
+  <div class="steps">
+    <div><b>Discover</b><p>We visit, map how you sell, stock and report today, and agree scope and price in writing.</p></div>
+    <div><b>Design</b><p>Screens, flows and brand are shown to you before any code is written.</p></div>
+    <div><b>Build</b><p>Work arrives in short cycles with a live demo each time, so you see progress weekly.</p></div>
+    <div><b>Launch</b><p>Data migration, staff training in Bangla or English, and go-live support on site.</p></div>
+    <div><b>Grow</b><p>Hosting, updates and new features on a monthly plan as the business changes.</p></div>
+  </div>
+  <div class="next">
+    <div><h3>GrowTech Skills Academy</h3><p>Job-ready courses in development, design, video, marketing and security, with fees paid monthly.</p><span>Page 04</span></div>
+    <div><h3>Digital safety sessions</h3><p>Workshops for schools, women’s groups and businesses, in Bangla and English.</p><span>Page 05</span></div>
+  </div>
+  <svg class="end-art" viewBox="0 0 300 300" aria-hidden="true">
+    <g fill="#141E30"><rect x="0" y="120" width="86" height="86" rx="16"/><rect x="96" y="120" width="86" height="86" rx="16"/><rect x="96" y="24" width="86" height="86" rx="16"/><rect x="192" y="216" width="86" height="86" rx="16"/></g>
+    <path d="M198 206 V190 A70 70 0 0 1 268 120 H284 V136 A70 70 0 0 1 214 206 Z" fill="#12B886" opacity=".9"/>
+  </svg>
+  <div class="contact">
+    <div class="cta">Have a project in mind?<br><em>Let's build it.</em></div>
+    <div class="lines">
+      <div><span>Phone</span><b>+880 1331 757437</b></div>
+      <div><span>Email</span><b>faysalsikder378486@gmail.com</b></div>
+    </div>
+  </div>
+  <div class="endbar">
+    <div class="lockup" style="--c:#fff; font-size:17pt">
+      <svg class="sym" viewBox="6 6 112 112"><rect x="6" y="12" width="50" height="50" rx="9" fill="#FFFFFF"/><rect x="6" y="68" width="50" height="50" rx="9" fill="#FFFFFF"/><rect x="62" y="68" width="50" height="50" rx="9" fill="#FFFFFF"/><path d="M68 56 V46 A40 40 0 0 1 108 6 H118 V16 A40 40 0 0 1 78 56 Z" fill="#12B886"/></svg><span>gr</span><svg class="o" viewBox="0 0 70 70"><rect x="8.5" y="22.5" width="41" height="41" rx="12" fill="none" stroke="#FFFFFF" stroke-width="13"/><path d="M40 30 V24 A22 22 0 0 1 62 2 H68 V8 A22 22 0 0 1 46 30 Z" fill="#12B886" stroke="#0B1324" stroke-width="4" paint-order="stroke"/></svg><span>wtech</span>
+    </div>
+    <span>Smart solutions that grow with you.</span>
+  </div>
+</section>
+
+</body>
+</html>

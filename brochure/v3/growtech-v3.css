@@ -1,0 +1,159 @@
+/* Hallmark · shape: Portfolio Grid (print, eight A4 pages) · genre: editorial · theme: brand (kept: the growtech logo, Lab Ink, Grow Green, Deep Green, Mint, Slate, Mist) · redesign: full · job: hire
+ * hero: Poster (the cover: one serif head over the studio's real work, a reel cover and a menu post) · nav: none (print) · footer: contact sheet on Lab Ink, page 8 · imagery: the user's own work (reel covers and frames, social posts, client site captures) · signature: three reel covers from Paradoxical Sajid set full height on the video spread · type: Gambetta display, Hanken Grotesk body, the logo's own Space Grotesk kept for the wordmark only
+ * axes: light/roman-serif/chromatic-green · posture: committed · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H5 E4 S5 R4 V5 · weakest: E, an eight-page print piece set by a linter tuned for screens; checked every page by render and fixed by eye */
+/* Hallmark · waive 37 · Space Grotesk draws only the unchanged growtech wordmark, Hind Siliguri only the Bangla lines on page 6 · the owner asked to keep the logo and the brochure speaks to Bangladeshi shops */
+/* Hallmark · waive 47b · one frame kind, real captures inside · the client sites are the product, shown as their own screenshot edge with no drawn browser chrome */
+/* Hallmark · dismissed 58 · a print brochure, one A4 page is the screen; the copy is the owner's facts, cut by a third from the first edition */
+/* Hallmark · dismissed 3 · the service rows are hairline-ruled text with no icon tiles and no card fills */
+@import url("./tokens.css");
+@import url("./base.css");
+
+html { font-size: 14px; background: var(--color-paper-3); }
+body { background: var(--color-paper-3); font-family: var(--font-body); }
+@page { size: A4; margin: 0; }
+@media print { html, body { background: var(--color-paper); } .page { margin: 0 !important; box-shadow: none !important; } }
+
+.page { position: relative; width: 210mm; height: 297mm; overflow: hidden; margin: 0 auto var(--space-xl); padding: var(--space-2xl) var(--space-2xl) var(--space-xl); background: var(--color-paper); display: flex; flex-direction: column; gap: var(--space-lg); break-after: page; box-shadow: var(--shadow-print); }
+.page--ink { background: var(--color-ink); color: var(--color-on-ink); }
+.page--mist { background: var(--color-paper-2); }
+.folio { position: absolute; left: var(--space-2xl); right: var(--space-2xl); bottom: var(--space-lg); display: flex; justify-content: space-between; font-size: var(--text-xs); color: var(--color-muted); }
+.page--ink .folio { color: var(--color-on-ink-muted); }
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; letter-spacing: var(--tracking-display); }
+h1 { font-size: 3.9rem; line-height: 1.02; max-width: 13ch; }
+h2 { font-size: 2.7rem; line-height: 1.04; max-width: 17ch; }
+h3 { font-size: 1.45rem; line-height: 1.15; max-width: 26ch; }
+.page--ink h1, .page--ink h2, .page--ink h3 { color: var(--color-on-ink); }
+p { line-height: 1.55; }
+.lead { font-size: 1.2rem; line-height: 1.5; color: var(--color-ink-2); max-width: 44ch; }
+.page--ink .lead { color: var(--color-on-ink-muted); }
+.muted { color: var(--color-muted); }
+.page--ink .muted { color: var(--color-on-ink-muted); }
+.small { font-size: var(--text-sm); }
+.cap { font-size: var(--text-sm); line-height: 1.45; color: var(--color-muted); }
+.page--ink .cap { color: var(--color-on-ink-muted); }
+.cap b { color: var(--color-ink); font-weight: 600; }
+.page--ink .cap b { color: var(--color-on-ink); }
+.bn { font-family: var(--font-bangla); font-weight: 600; }
+.cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-xl); }
+.rule { border-top: 1px solid var(--color-rule); }
+.page--ink .rule { border-color: var(--color-ink-rule); }
+
+/* the growtech logo, drawn exactly as the identity file draws it */
+.lockup { display: inline-flex; align-items: baseline; font-family: var(--font-wordmark); font-weight: 600; letter-spacing: -0.05em; line-height: 1; color: var(--color-ink); }
+.lockup .sym { width: 0.92em; height: 0.92em; margin-right: 0.26em; position: relative; top: 0.2em; flex: 0 0 auto; }
+.lockup .o { width: 0.65em; height: 0.65em; margin: 0 -0.05em 0 0.01em; flex: 0 0 auto; }
+.lockup .m { fill: var(--color-ink); }
+.lockup .leaf { fill: var(--color-accent); }
+.lockup .ostroke { fill: none; stroke: var(--color-ink); stroke-width: 13; }
+.lockup .oleaf { fill: var(--color-accent); stroke: var(--color-paper); stroke-width: 4; paint-order: stroke; }
+.lockup--rev { color: var(--color-on-ink); }
+.lockup--rev .m { fill: var(--color-white); }
+.lockup--rev .ostroke { stroke: var(--color-white); }
+.lockup--rev .oleaf { stroke: var(--color-ink); }
+
+/* ---------- 1 cover ---------- */
+.cover { padding-bottom: var(--space-xl); }
+.cover .top { display: flex; justify-content: space-between; align-items: center; }
+.cover .top .lockup { font-size: 2rem; }
+.cover h1 { margin-top: var(--space-xl); font-size: 4.3rem; max-width: 12ch; color: var(--color-on-ink); }
+.cover .lead { margin-top: var(--space-md); }
+.cover .tag { color: var(--color-accent-soft); font-family: var(--font-display); font-size: 1.45rem; margin-top: var(--space-sm); }
+.cover .work { position: relative; flex: 1; margin-top: var(--space-md); }
+.cover .work img { position: absolute; border-radius: var(--radius-img); box-shadow: var(--shadow-cover); }
+.cover .w-reel { width: 43%; aspect-ratio: 9 / 16; object-fit: cover; right: 2%; top: 0; transform: rotate(2.5deg); }
+.cover .w-post { width: 40%; aspect-ratio: 1; object-fit: cover; left: 6%; top: 12%; transform: rotate(-3deg); }
+.cover .w-site { width: 46%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; left: 22%; bottom: 2%; transform: rotate(1deg); }
+.cover .bottom { display: flex; justify-content: space-between; gap: var(--space-lg); font-size: var(--text-sm); color: var(--color-on-ink-muted); }
+.cover .bottom b { color: var(--color-on-ink); font-weight: 600; }
+
+/* ---------- 2 what we do ---------- */
+.pillars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-lg); }
+.pillar { display: flex; flex-direction: column; gap: var(--space-sm); padding-top: var(--space-md); border-top: 2px solid var(--color-ink); }
+.pillar .n { font-family: var(--font-display); font-size: 3rem; line-height: 0.9; color: var(--color-accent-deep); }
+.pillar ul { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-2xs); }
+.pillar li { font-size: var(--text-sm); padding: var(--space-2xs) 0; border-bottom: 1px solid var(--color-rule); }
+.pillar p { font-size: var(--text-md); color: var(--color-ink-2); }
+.also2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-xl); padding-top: var(--space-md); }
+.also2 h3 { font-size: 1.2rem; margin-bottom: var(--space-2xs); }
+.also2 p { font-size: var(--text-sm); color: var(--color-ink-2); }
+.pull { margin-top: auto; margin-bottom: var(--space-lg); font-family: var(--font-display); font-size: 1.9rem; line-height: 1.2; letter-spacing: var(--tracking-display); max-width: 30ch; color: var(--color-ink); }
+.pull span { color: var(--color-accent-deep); }
+
+/* ---------- 3 graphic design ---------- */
+.gd { flex: 1; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-template-rows: repeat(6, minmax(0, 1fr)); gap: var(--space-xs); margin-bottom: var(--space-lg); }
+.gd figure { margin: 0; position: relative; overflow: hidden; border-radius: var(--radius-img); }
+.gd img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.gd figure { min-height: 0; min-width: 0; }
+.gd figcaption { position: absolute; left: var(--space-xs); bottom: var(--space-xs); padding: var(--space-3xs) var(--space-xs); background: var(--color-paper); border-radius: var(--radius-img); font-size: var(--text-xs); color: var(--color-ink); }
+.gd .a { grid-column: 1 / 4; grid-row: 1 / 5; }
+.gd .b { grid-column: 4 / 7; grid-row: 1 / 3; }
+.gd .c { grid-column: 4 / 6; grid-row: 3 / 5; }
+.gd .d { grid-column: 6 / 7; grid-row: 3 / 5; }
+.gd .e { grid-column: 1 / 3; grid-row: 5 / 7; }
+.gd .f { grid-column: 3 / 5; grid-row: 5 / 7; }
+.gd .g { grid-column: 5 / 7; grid-row: 5 / 7; }
+
+/* ---------- 4 video ---------- */
+.reels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-md); }
+.reels figure { margin: 0; display: flex; flex-direction: column; gap: var(--space-xs); }
+.reels img { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border-radius: var(--radius-img); }
+.vidrow { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-lg); }
+.made { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-2xs) var(--space-lg); }
+.made li { font-size: var(--text-sm); padding: var(--space-xs) 0; border-top: 1px solid var(--color-ink-rule); color: var(--color-on-ink); }
+.frames { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-xs); }
+.frames img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 70%; border-radius: var(--radius-img); }
+
+/* ---------- 5 websites ---------- */
+.sites { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-lg) var(--space-lg); }
+.sites figure { margin: 0; display: flex; flex-direction: column; gap: var(--space-xs); }
+.sites img { width: 100%; aspect-ratio: 16 / 8; object-fit: cover; object-position: top; border-radius: var(--radius-img); box-shadow: 0 0 0 1px var(--color-rule); }
+.sites .wide { grid-column: 1 / -1; }
+.sites .wide img { aspect-ratio: 21 / 7; }
+.morelist { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-2xs) var(--space-lg); font-size: var(--text-sm); color: var(--color-ink-2); margin-top: auto; margin-bottom: var(--space-lg); padding-top: var(--space-sm); border-top: 1px solid var(--color-rule); }
+
+/* ---------- 6 automation and enterprise ---------- */
+.shops { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
+.shops span { font-size: var(--text-sm); padding: var(--space-2xs) var(--space-sm); border: 1px solid var(--color-rule); border-radius: var(--radius-pill); background: var(--color-white); }
+.bnline { font-size: 1.6rem; line-height: 1.45; color: var(--color-ink); }
+.figs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--color-ink); }
+.figs div { padding: var(--space-sm) var(--space-sm) 0 0; }
+.figs div + div { padding-left: var(--space-sm); border-left: 1px solid var(--color-rule); }
+.figs b { display: block; font-family: var(--font-display); font-weight: 600; font-size: 2.4rem; line-height: 1; letter-spacing: var(--tracking-display); font-variant-numeric: lining-nums tabular-nums; }
+.figs span { display: block; margin-top: var(--space-2xs); font-size: var(--text-sm); color: var(--color-muted); line-height: 1.35; }
+.swish { margin-top: auto; margin-bottom: var(--space-lg); display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: var(--space-md); font-size: var(--text-sm); color: var(--color-muted); }
+.swish img { height: 16px; width: auto; }
+
+/* ---------- 7 software and brands ---------- */
+.seac { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--space-xl); padding: var(--space-lg); background: var(--color-white); border-radius: var(--radius-card); box-shadow: 0 0 0 1px var(--color-rule); }
+.seac .nums { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-sm); align-content: start; }
+.seac .nums b { font-variant-numeric: tabular-nums; display: block; font-family: var(--font-display); font-size: 2rem; line-height: 1; }
+.seac .nums span { font-size: var(--text-sm); color: var(--color-muted); }
+.ptable { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+.ptable th { text-align: left; font-weight: 600; color: var(--color-muted); padding: 0 var(--space-md) var(--space-xs) 0; border-bottom: 1px solid var(--color-ink); }
+.ptable td { padding: var(--space-xs) var(--space-md) var(--space-xs) 0; border-bottom: 1px solid var(--color-rule); vertical-align: top; color: var(--color-ink-2); }
+.ptable td:first-child { font-family: var(--font-display); font-size: 1.05rem; color: var(--color-ink); white-space: nowrap; }
+.wall { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-xs); margin-bottom: var(--space-lg); }
+.wall div { height: 14mm; display: grid; place-items: center; padding: var(--space-xs); background: var(--color-white); border-radius: var(--radius-img); box-shadow: 0 0 0 1px var(--color-rule); }
+.wall img { max-width: 100%; max-height: 9.5mm; object-fit: contain; }
+.wall img.white { filter: brightness(0); opacity: 0.85; }
+.wall img.sq { max-height: 11.5mm; }
+
+/* ---------- 8 about, how we work, contact ---------- */
+.about { display: grid; grid-template-columns: 34mm minmax(0, 1fr); gap: var(--space-lg); align-items: start; }
+.about img { width: 34mm; height: 40mm; object-fit: cover; object-position: center 25%; border-radius: var(--radius-img); }
+.about p { color: var(--color-on-ink-muted); font-size: var(--text-md); }
+.about h3 { color: var(--color-on-ink); }
+.steps { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--space-md); counter-reset: s; }
+.steps li { counter-increment: s; border-top: 1px solid var(--color-ink-rule); padding-top: var(--space-sm); }
+.steps li::before { content: counter(s); display: block; font-family: var(--font-display); font-size: 1.9rem; line-height: 1; color: var(--color-accent-soft); margin-bottom: var(--space-xs); }
+.steps b { display: block; color: var(--color-on-ink); font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; }
+.steps p { font-size: var(--text-sm); color: var(--color-on-ink-muted); margin-top: var(--space-2xs); line-height: 1.45; }
+.contact { margin-top: auto; margin-bottom: var(--space-lg); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-xl); align-items: end; }
+.contact dl { margin: 0; display: grid; grid-template-columns: 22mm minmax(0, 1fr); gap: var(--space-sm) var(--space-md); font-size: var(--text-md); }
+.contact dt { color: var(--color-on-ink-muted); font-size: var(--text-sm); }
+.contact dd { margin: 0; padding-bottom: var(--space-sm); border-bottom: 1px solid var(--color-ink-rule); color: var(--color-on-ink); }
+.contact a { color: var(--color-on-ink); text-decoration-color: var(--color-accent); }
+.contact a:hover, .contact a:active { color: var(--color-accent-soft); }
+.contact a:focus-visible { outline: 2px solid var(--color-accent-soft); outline-offset: 2px; }

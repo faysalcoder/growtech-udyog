@@ -1,0 +1,38 @@
+:root {
+  color-scheme: light;
+  --space-3xs: 2px; --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px; --space-4xl: 144px;
+  --text-xs: 0.8125rem; --text-sm: 0.875rem; --text-md: 1rem; --text-lg: 1.25rem; --text-xl: 1.5625rem; --text-2xl: 1.953rem; --text-3xl: 2.441rem;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --dur-micro: 120ms; --dur-short: 220ms;
+  --container: 1440px; --gutter: 64px;
+
+  /* the growtech brand, read from "GrowTech Labs — Logo Identity.html" (page 4, colour) */
+  --brand-ink: #0B1324; --brand-green: #12B886; --brand-deep: #0A7D5B; --brand-mint: #7FE0BC; --brand-slate: #5B6672; --brand-mist: #F3F6F5;
+
+  --color-paper: oklch(98.2% 0.006 165);
+  --color-paper-2: var(--brand-mist);
+  --color-paper-3: oklch(93.5% 0.018 165);
+  --color-ink: var(--brand-ink);
+  --color-ink-2: oklch(33% 0.03 260);
+  --color-muted: var(--brand-slate);
+  --color-rule: oklch(87% 0.012 200);
+  --color-accent: var(--brand-green);
+  --color-accent-deep: var(--brand-deep);
+  --color-accent-soft: var(--brand-mint);
+  --color-accent-ink: var(--brand-ink);
+  --color-focus: var(--brand-deep);
+  --color-on-ink: oklch(97.5% 0.006 165);
+  --color-on-ink-muted: oklch(76% 0.02 240);
+  --color-ink-raised: oklch(24% 0.035 262);
+  --color-ink-rule: oklch(32% 0.03 262);
+  --color-white: oklch(99.6% 0.003 165);
+
+  --font-display: "Gambetta", "Iowan Old Style", Georgia, serif;
+  --font-body: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-wordmark: "Space Grotesk", ui-sans-serif, sans-serif;
+  --font-bangla: "Hind Siliguri", "Hanken Grotesk", sans-serif;
+
+  --radius-card: 6px; --radius-img: 4px; --radius-pill: 999px;
+  --shadow-print: 0 1px 2px oklch(20% 0.02 260 / 0.10), 0 12px 30px -16px oklch(20% 0.03 260 / 0.35);
+  --shadow-cover: 0 2px 4px oklch(10% 0.02 260 / 0.4), 0 30px 50px -20px oklch(5% 0.02 260 / 0.7);
+  --tracking-display: -0.018em;
+}
