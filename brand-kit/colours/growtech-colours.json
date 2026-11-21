@@ -1,0 +1,114 @@
+[
+  {
+    "name": "Lab Ink",
+    "hex": "#0B1324",
+    "rgb": [
+      11,
+      19,
+      36
+    ],
+    "cmyk_approx": [
+      69,
+      47,
+      0,
+      86
+    ],
+    "use": "Primary. Text, backgrounds, the logo."
+  },
+  {
+    "name": "Grow Green",
+    "hex": "#12B886",
+    "rgb": [
+      18,
+      184,
+      134
+    ],
+    "cmyk_approx": [
+      90,
+      0,
+      27,
+      28
+    ],
+    "use": "Primary accent. The leaf, highlights, calls to action."
+  },
+  {
+    "name": "Deep Green",
+    "hex": "#0A7D5B",
+    "rgb": [
+      10,
+      125,
+      91
+    ],
+    "cmyk_approx": [
+      92,
+      0,
+      27,
+      51
+    ],
+    "use": "Green text and links on light backgrounds."
+  },
+  {
+    "name": "Mint",
+    "hex": "#7FE0BC",
+    "rgb": [
+      127,
+      224,
+      188
+    ],
+    "cmyk_approx": [
+      43,
+      0,
+      16,
+      12
+    ],
+    "use": "Green text on Lab Ink."
+  },
+  {
+    "name": "Slate",
+    "hex": "#5B6672",
+    "rgb": [
+      91,
+      102,
+      114
+    ],
+    "cmyk_approx": [
+      20,
+      11,
+      0,
+      55
+    ],
+    "use": "Secondary text."
+  },
+  {
+    "name": "Mist",
+    "hex": "#F3F6F5",
+    "rgb": [
+      243,
+      246,
+      245
+    ],
+    "cmyk_approx": [
+      1,
+      0,
+      0,
+      4
+    ],
+    "use": "Light panels and page backgrounds."
+  },
+  {
+    "name": "White",
+    "hex": "#FFFFFF",
+    "rgb": [
+      255,
+      255,
+      255
+    ],
+    "cmyk_approx": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "use": "Backgrounds and text on Lab Ink."
+  }
+]

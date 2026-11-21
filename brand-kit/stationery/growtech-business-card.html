@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>growtech business card</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Standard business card, 85 x 55 mm. Page 1 front, page 2 back. */
+:root{ --ink:#0B1324; --green:#12B886; --deep:#0A7D5B; --mint:#7FE0BC; --slate:#5B6672; --text:#33404D; --white:#FFFFFF;
+  --display:"Space Grotesk", sans-serif; --body:"Inter", system-ui, sans-serif }
+@page{ size:85mm 55mm; margin:0 }
+*{ box-sizing:border-box; margin:0; padding:0 }
+html{ background:#d9dedc }
+body{ font-family:var(--body); -webkit-print-color-adjust:exact; print-color-adjust:exact }
+.card{ width:85mm; height:55mm; position:relative; overflow:hidden; margin:8mm auto; break-after:page; page-break-after:always }
+@media print{ html{ background:none } .card{ margin:0 } }
+
+/* front */
+.front{ background:var(--ink); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4.2mm }
+.lockup{ display:flex; align-items:baseline; font-family:var(--display); font-size:10.6mm; font-weight:600; letter-spacing:-.05em; line-height:1; color:var(--white) }
+.lockup .sym{ width:.92em; height:.92em; margin-right:.26em; position:relative; top:.2em; flex:none }
+.lockup .o{ width:.65em; height:.65em; margin:0 -.05em 0 .01em; flex:none }
+.tag{ font-size:3.2mm; color:var(--mint); letter-spacing:.01em }
+
+/* back */
+.back{ background:var(--white); color:var(--ink); padding:5.6mm 6.2mm; display:flex; flex-direction:column; justify-content:space-between }
+.top{ display:flex; justify-content:space-between; align-items:flex-start }
+.name{ font-family:var(--display); font-size:5mm; font-weight:600; letter-spacing:-.02em; line-height:1.15 }
+.role{ font-size:3.1mm; font-weight:500; color:var(--deep); margin-top:.8mm }
+.cert{ font-size:2.75mm; color:var(--slate); margin-top:.5mm }
+.back .mark{ width:6.9mm; height:6.9mm; flex:none }
+.bottom{ display:flex; justify-content:space-between; align-items:flex-end; gap:3mm }
+.lines{ display:flex; flex-direction:column; gap:1.3mm; font-size:2.95mm; color:var(--text); min-width:0 }
+.lines div{ display:flex; align-items:center; gap:2mm; white-space:nowrap }
+.lines svg{ width:3.4mm; height:3.4mm; flex:none; fill:none; stroke:var(--deep); stroke-width:2; stroke-linecap:round; stroke-linejoin:round }
+.lines .web{ font-weight:600; color:var(--ink) }
+.qr{ width:13mm; height:13mm; display:block; flex:none; margin-bottom:1.6mm }
+.bar{ position:absolute; right:0; bottom:0; width:25.4mm; height:1.6mm; background:var(--green) }
+</style>
+</head>
+<body>
+
+<section class="card front">
+  <div class="lockup" role="img" aria-label="growtech"><svg viewBox="6 6 112 112" aria-hidden="true" class="sym"><rect x="6" y="12" width="50" height="50" rx="9" fill="#FFFFFF"/><rect x="6" y="68" width="50" height="50" rx="9" fill="#FFFFFF"/><rect x="62" y="68" width="50" height="50" rx="9" fill="#FFFFFF"/><path d="M68 56 V46 A40 40 0 0 1 108 6 H118 V16 A40 40 0 0 1 78 56 Z" fill="#12B886"/></svg><span>gr</span><svg viewBox="0 0 70 70" aria-hidden="true" class="o"><rect x="8.5" y="22.5" width="41" height="41" rx="12" fill="none" stroke="#FFFFFF" stroke-width="13"/><path d="M40 30 V24 A22 22 0 0 1 62 2 H68 V8 A22 22 0 0 1 46 30 Z" fill="#12B886" stroke="#0B1324" stroke-width="4" paint-order="stroke"/></svg><span>wtech</span></div>
+  <div class="tag">Smart solutions that grow with you.</div>
+</section>
+
+<section class="card back">
+  <div class="top">
+    <div>
+      <div class="name">Md Faysal Sikder</div>
+      <div class="role">Founder &amp; Lead Engineer</div>
+      <div class="cert">Software Engineer</div>
+    </div>
+    <svg viewBox="6 6 112 112" aria-hidden="true" class="mark"><rect x="6" y="12" width="50" height="50" rx="9" fill="#0B1324"/><rect x="6" y="68" width="50" height="50" rx="9" fill="#0B1324"/><rect x="62" y="68" width="50" height="50" rx="9" fill="#0B1324"/><path d="M68 56 V46 A40 40 0 0 1 108 6 H118 V16 A40 40 0 0 1 78 56 Z" fill="#12B886"/></svg>
+  </div>
+  <div class="bottom">
+    <div class="lines">
+      <div><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg><span>+880 1331 757437</span></div>
+      <div><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg><span>faysalsikder378486@gmail.com</span></div>
+      <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.5-3.5-9s1-6.5 3.5-9z"/></svg><span class="web">growtech.live</span></div>
+    </div>
+    <svg viewBox="0 0 25 25" class="qr" aria-label="QR code: growtech.live" role="img"><path shape-rendering="crispEdges" stroke="#0b1324" d="M0 0.5h7m1 0h6m2 0h1m1 0h7m-25 1h1m5 0h1m1 0h1m3 0h1m5 0h1m5 0h1m-25 1h1m1 0h3m1 0h1m2 0h1m2 0h2m1 0h1m2 0h1m1 0h3m1 0h1m-25 1h1m1 0h3m1 0h1m1 0h4m1 0h2m3 0h1m1 0h3m1 0h1m-25 1h1m1 0h3m1 0h1m4 0h1m1 0h3m2 0h1m1 0h3m1 0h1m-25 1h1m5 0h1m3 0h2m1 0h1m2 0h1m1 0h1m5 0h1m-25 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-17 1h1m1 0h1m1 0h1m-13 1h1m1 0h2m1 0h3m4 0h1m1 0h3m1 0h1m2 0h1m1 0h2m-25 1h5m4 0h3m2 0h1m1 0h2m1 0h1m3 0h1m-23 1h1m2 0h1m1 0h1m1 0h2m1 0h1m1 0h1m2 0h2m1 0h1m-20 1h2m1 0h3m1 0h2m1 0h1m2 0h1m1 0h2m1 0h1m2 0h2m-23 1h1m3 0h1m1 0h3m1 0h2m1 0h3m1 0h2m1 0h1m1 0h3m-22 1h1m5 0h1m1 0h1m2 0h7m3 0h1m-24 1h2m1 0h3m3 0h1m1 0h3m2 0h2m1 0h1m1 0h2m-24 1h1m3 0h2m1 0h1m1 0h2m1 0h1m1 0h4m1 0h2m3 0h1m-23 1h1m1 0h1m1 0h1m3 0h2m2 0h1m1 0h9m-17 1h1m1 0h1m1 0h2m2 0h1m3 0h1m1 0h1m1 0h1m-25 1h7m1 0h1m1 0h3m3 0h1m1 0h1m1 0h1m1 0h3m-25 1h1m5 0h1m1 0h2m2 0h1m1 0h3m3 0h1m-21 1h1m1 0h3m1 0h1m3 0h4m2 0h6m1 0h1m-24 1h1m1 0h3m1 0h1m1 0h3m1 0h2m1 0h1m1 0h2m1 0h5m-25 1h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h1m2 0h1m1 0h1m1 0h2m-24 1h1m5 0h1m2 0h1m5 0h1m1 0h1m2 0h1m1 0h1m-23 1h7m1 0h3m1 0h1m1 0h1m2 0h1m1 0h6"/></svg>
+  </div>
+  <div class="bar"></div>
+</section>
+
+</body>
+</html>

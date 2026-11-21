@@ -1,0 +1,12 @@
+:root{
+  --gt-lab-ink: #0B1324;
+  --gt-grow-green: #12B886;
+  --gt-deep-green: #0A7D5B;
+  --gt-mint: #7FE0BC;
+  --gt-slate: #5B6672;
+  --gt-mist: #F3F6F5;
+  --gt-white: #FFFFFF;
+  --gt-font-display: 'Space Grotesk', system-ui, sans-serif;
+  --gt-font-body: 'Inter', system-ui, sans-serif;
+  --gt-font-bangla: 'Hind Siliguri', 'Inter', sans-serif;
+}

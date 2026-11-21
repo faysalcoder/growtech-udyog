@@ -1,0 +1,10 @@
+growtech colour palette
+CMYK values are calculated approximations. Ask your printer for a proof and match it to the HEX colours.
+
+Lab Ink     HEX #0B1324   RGB  11  19  36   CMYK 69 47 0 86   Primary. Text, backgrounds, the logo.
+Grow Green  HEX #12B886   RGB  18 184 134   CMYK 90 0 27 28   Primary accent. The leaf, highlights, calls to action.
+Deep Green  HEX #0A7D5B   RGB  10 125  91   CMYK 92 0 27 51   Green text and links on light backgrounds.
+Mint        HEX #7FE0BC   RGB 127 224 188   CMYK 43 0 16 12   Green text on Lab Ink.
+Slate       HEX #5B6672   RGB  91 102 114   CMYK 20 11 0 55   Secondary text.
+Mist        HEX #F3F6F5   RGB 243 246 245   CMYK 1 0 0 4   Light panels and page backgrounds.
+White       HEX #FFFFFF   RGB 255 255 255   CMYK 0 0 0 0   Backgrounds and text on Lab Ink.
